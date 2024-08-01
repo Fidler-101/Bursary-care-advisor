@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bursary Care Advisor - Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("/elearning-education-internet-technology-webinar-260nw-1139995139.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background-color: #343a40; /* Dark gray */
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        .footer-images img {
+            height: 100%;
+            max-width: 100%;
+        }
+
+        footer {
+            background-color: #343a40; /* Dark gray */
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        .jumbotron {
+            background-color: rgba(52, 58, 64, 0.8); /* Dark gray with opacity */
+            color: #fff;
+            padding: 60px 20px;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .jumbotron h1,
+        .jumbotron p {
+            text-align: center;
+        }
+
+        .jumbotron .btn {
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Light gray with opacity */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .card-text {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bursary Care Advisor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login/user}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to Bursaries</h1>
+                <p class="lead">Find the perfect bursary for your education.</p>
+                <hr class="my-4">
+                <p>Explore our vast collection of bursaries offered by various institutions.</p>
+                <a class="btn btn-warning btn-lg" href="https://www.zabursaries.co.za/" role="button">Explore Bursaries</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="about" class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">About Us</h2>
+                    <p class="card-text">At <b>Bursary Care Advisor</b>, our mission is to make higher education accessible to all individuals, regardless of their financial circumstances. We believe that every student deserves the opportunity to pursue their academic aspirations, and we are committed to providing the support and resources needed to make that possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="services" class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Our Services</h2>
+                    <p class="card-text">Introducing our Bursary Care Advisor program - a dedicated initiative aimed at helping students navigate the complexities of financial aid and bursaries. Our team of experienced advisors is here to assist you in identifying and applying for relevant bursaries, scholarships, and financial aid programs tailored to your individual needs.</p>
+                    <ul>
+                        <li>Bursary eligibility assessment</li>
+                        <li>Application assistance</li>
+                        <li>Financial planning</li>
+                        <li>Advocacy and support</li>
+                        <li>Continued guidance throughout your academic journey</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contact" class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Contact Us</h2>
+                    <p class="card-text">Email: info@bursarycareadvisor.com</p>
+                    <p class="card-text">Phone: +012-093-8346</p>
+                    <p class="card-text">Address: 123 Pretoria, Midrand, South Africa</p>
+                <p>GitHub: <a href="https://github.com/HermyMo/The-Invincibles.git"><img class="circle-img" src="/github-mark.png" alt="GitHub Icon" width="25"></a></p>
+                    <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61559516747176"><img class="circle-img" src="/download.png" alt="Facebook Icon" width="25"></a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Bursary Care Advisor. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

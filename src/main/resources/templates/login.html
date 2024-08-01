@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("/elearning-education-internet-technology-webinar-260nw-1139995139.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #f8f9fa; /* Light gray background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-check-label {
+            font-weight: bold;
+        }
+        .btn-dark {
+            border-radius: 0;
+        }
+        /* Custom styles for buttons */
+        .btn-dark {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .btn-dark:hover {
+            background-color: #23272b;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Bursary Care Advisor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="login-container" style="background-color: #ccc;"> <!-- Change background color to gray -->
+        <h2 class="text-center mb-4">Login</h2>
+
+        <form th:action="@{/validate/user/login}" method="POST">
+
+
+            <div class="form-group">
+                <div th:if="${message}" class="alert alert-danger mt-3" role="alert">
+                    <p th:text="${message}"></p>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="applicant" value="applicant" onclick="showCreateAccount()">
+                    <label class="form-check-label" for="applicant">
+                        Applicant
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="role" id="administrator" value="administrator" onclick="showCreateAccount()">
+                    <label class="form-check-label" for="administrator">
+                        Administrator
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-dark btn-block">Login</button>
+        </form>
+        <div id="create-account">
+            <p class="mt-3 text-center">Don't have an account? <a th:href="@{/add/user}">Create Account</a></p>
+        </div>
+        <div id="forgot-password">
+            <p class="mt-3 text-center"><a href="#">Forgot Password?</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showCreateAccount() {
+        var applicantRadio = document.getElementById("applicant");
+        var administratorRadio = document.getElementById("administrator");
+        var createAccountDiv = document.getElementById("create-account");
+        var forgotPasswordDiv = document.getElementById("forgot-password");
+
+        if (applicantRadio.checked) {
+            createAccountDiv.style.display = "block";
+            forgotPasswordDiv.style.display = "block";
+        } else if (administratorRadio.checked) {
+            createAccountDiv.style.display = "none";
+            forgotPasswordDiv.style.display = "block";
+        } else {
+            createAccountDiv.style.display = "none";
+            forgotPasswordDiv.style.display = "none";
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

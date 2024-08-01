@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Account Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #saveForm {
+            margin: 20px auto;
+            width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table td {
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%; /* Make all buttons the same width */
+            box-sizing: border-box; /* Ensure padding is included in the width */
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #333;
+        }
+
+        #deleteForm {
+            display: inline-block;
+        }
+
+        #logoutForm,
+        #deleteForm {
+            margin-left: 10px;
+        }
+
+        #profilePicture {
+            text-align: center;
+        }
+
+        #profilePicture img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            display: flex; /* Use flexbox to align buttons */
+            justify-content: center; /* Center align buttons horizontally */
+        }
+
+        .button-container button,
+        .button-container input[type="submit"] {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>View Personal Account</h1>
+
+<form id="saveForm" action="LoginServlet.do" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <table class="table">
+            <tbody>
+
+            <tr>
+                <td>Name:</td>
+                <td><input id="name" type="text" th:value="${applicant.firstname}" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Surname:</td>
+                <td><input id="dob" type="text" th:value="${applicant.lastname}"readonly></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td><input id="gender" type="text" th:value="${applicant.gender}" readonly></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td>Email:</td>
+                <td><input id="email" type="text" th:value="${applicant.email}" readonly></td>
+            </tr>
+            <tr>
+                <td>Cell Number:</td>
+                <td><input id="cellNumber" type="text" th:value="${applicant.phoneNumber}" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Status:</td>
+                <td><input id="status" type="text" name="status" th:value="${applicant.status}" readonly></td>
+            </tr>
+            <tr>
+                <td>Upload University letter:</td>
+                <td><input type="file" name="letter" accept=".pdf" readonly></td>
+            </tr>
+            <tr>
+                <td>Upload Your picture:</td>
+                <td>
+                    <input type="file" name="image" accept="image/*" id="profileImage">
+                    <div id="profilePicture">
+                        <img id="preview" src="" alt="Your profile picture will appear here" style="display: none;">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="hidden" id="opt" name="opt" value="SAVE">
+        <input type="submit" value="Save">
+
+        <!-- Edit, Logout, and Delete Buttons -->
+        <div class="button-container">
+            <button onclick="enableFields()">Edit</button>
+            <form id="logoutForm" th:action="@{/}">
+                <input type="submit" value="Logout">
+            </form>
+            <form id="deleteForm" action="LoginServlet.do" method="POST">
+                <input type="hidden" name="opt" value="delete">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
+</form>
+
+<script>
+    function enableFields() {
+        // Enable all input fields for editing except file inputs
+        var inputs = document.querySelectorAll('input[type="text"][readonly]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('readonly');
+        });
+
+        // Change the form action to the relevant servlet URL
+        document.getElementById('saveForm').action = 'LoginServlet.do';
+    }
+
+    // Display the selected image when uploading
+    document.getElementById('profileImage').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>
+</body>
+</html>
